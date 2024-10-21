@@ -3,6 +3,23 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+# Ignore NuGet packages
+packages/
+*.nupkg
+*.snupkg
+
+# Ignore build outputs
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.suo
+.vscode/
+
+# Ignore dotnet restore artifacts
+project.lock.json
+
 # dotenv files
 .env
 
@@ -210,8 +227,10 @@ PublishScripts/
 #!**/[Pp]ackages/repositories.config
 # NuGet v3's project.json files produces more ignorable files
 *.nuget.props
+*.nuget
+*.nuget.g.props
 *.nuget.targets
-
+*.nuget.g.targets
 # Microsoft Azure Build Output
 csx/
 *.build.csdef
