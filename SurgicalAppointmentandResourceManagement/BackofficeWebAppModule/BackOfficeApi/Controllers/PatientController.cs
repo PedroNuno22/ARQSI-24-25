@@ -54,5 +54,22 @@ namespace PatientManagement.Controllers
             return CreatedAtAction(nameof(GetById), new { id = createdPatient.Id }, createdPatient);
         }
 
+        // PUT: api/patient/{id}
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, [FromBody] Patient patient)
+        {
+            // Fetch the patient by ID from the Inmemory repository
+            var existingPatient = _repository.GetById(id);
+            //if not found error
+            if (existingPatient == null)
+            {
+                return NotFound();
+            }
+            //If found grabs it and calls the update function
+            patient.Id = id;
+            _repository.Update(patient);
+            return NoContent();
+        }
+
     }
 }
