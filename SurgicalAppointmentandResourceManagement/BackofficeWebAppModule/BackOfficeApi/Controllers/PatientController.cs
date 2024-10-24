@@ -60,7 +60,7 @@ namespace PatientManagement.Controllers
         {
             // Fetch the patient by ID from the Inmemory repository
             var existingPatient = _repository.GetById(id);
-            //if not found error
+            //If not found error
             if (existingPatient == null)
             {
                 return NotFound();
@@ -70,6 +70,20 @@ namespace PatientManagement.Controllers
             _repository.Update(patient);
             return NoContent();
         }
+
+        // DELETE: api/patient/{id}
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            //Fetch in the memory repository for the id
+            var patient = _repository.GetById(id);
+            if (patient == null)
+            {
+                return NotFound();
+            }
+            //Calls function to delete from repository
+            _repository.Delete(id);
+            return NoContent();
 
     }
 }
