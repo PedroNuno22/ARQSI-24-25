@@ -6,11 +6,12 @@ using System;
 var builder = WebApplication.CreateBuilder(args);
 
 // Configuração do Entity Framework com SQL Server
-//builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-//Alberto acrescentou esta linha para base de dados inmemory
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseInMemoryDatabase("InMemoryDb"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Base de dados inmemory
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//    options.UseInMemoryDatabase("InMemoryDb"));
 
 // Configuração do ASP.NET Identity
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
