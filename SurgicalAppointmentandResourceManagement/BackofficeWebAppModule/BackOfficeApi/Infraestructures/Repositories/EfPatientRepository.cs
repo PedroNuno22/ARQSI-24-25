@@ -1,33 +1,35 @@
 using System.Collections.Generic; // Imports collections like List
 using System.Linq; // First or default querying collections
+using BackOfficeApi.Infrastructure;
 using PatientManagement.Domain.Entities; //Imports Patient entity
 using PatientManagement.Domain.Interfaces; //Imports IPatientRepository interface
 
 // This class implements an in-memory repository for patient entity 
 namespace PatientManagement.Infrastructure.Repositories
 {
-    public class InMemoryPatientRepository : IPatientRepository
+    public class EfPatientRepository : IPatientRepository // This class implements IPatientRepository with EF Core methods, interacting with the PatientDbContext.
     {
+        private readonly PatientDbContext _context;
 
-        private static List<Patient> _patients = new List<Patient>(); // Static list to store patient in memory
-        private static int _nextId = 1;
+        public EfPatientRepository(PatientDbContext context)
+        {
+            _context = context;
+        }
 
-        //Method to return the list of all patients
-        public List<Patient> GetAll() => _patients;
+        public List<Patient> GetAll() => _context.Patients.ToList();
 
-        // Method to get a patient by ID, or null if not found
-        public Patient GetById(int id) => _patients.FirstOrDefault(p => p.Id == id);
+        public Patient GetById(int id) => _context.Patients.Find(id);
 
         public Patient Create(Patient patient)
         {
-            patient.Id = _nextId++;
-            _patients.Add(patient);
+            _context.Patients.Add(patient);
+            _context.SaveChanges();
             return patient;
         }
 
         public void Update(Patient patient)
         {
-            var existingPatient = GetById(patient.Id);
+            var existingPatient = _context.Patients.Find(patient.Id);
             if (existingPatient != null)
             {
                 existingPatient.FirstName = patient.FirstName;
@@ -35,15 +37,18 @@ namespace PatientManagement.Infrastructure.Repositories
                 existingPatient.MedicalHistory = patient.MedicalHistory;
                 existingPatient.Email = patient.Email;
                 existingPatient.Phone = patient.Phone;
+
+                _context.SaveChanges();
             }
         }
 
         public void Delete(int id)
         {
-            var patient = GetById(id);
+            var patient = _context.Patients.Find(id);
             if (patient != null)
             {
-                _patients.Remove(patient);
+                _context.Patients.Remove(patient);
+                _context.SaveChanges();
             }
         }
     }
