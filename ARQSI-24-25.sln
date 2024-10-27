@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SurgicalAppointmentandResourceManagement", "SurgicalAppointmentandResourceManagement", "{BA6FE7B8-D9FC-49B7-A495-54F99D2D762F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackofficeWebAppModule", "BackofficeWebAppModule", "{1322FA04-4B93-4445-A111-E1BD1A0415FB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackOfficeApi", "SurgicalAppointmentandResourceManagement\BackofficeWebAppModule\BackOfficeApi\BackOfficeApi.csproj", "{97521B1A-30B9-4456-B280-10F23B4E78C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOfficeApi.Tests", "BackOfficeApi.Tests\BackOfficeApi.Tests.csproj", "{48AA191E-C206-44CB-85F6-0A7D7B2F98E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97521B1A-30B9-4456-B280-10F23B4E78C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97521B1A-30B9-4456-B280-10F23B4E78C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97521B1A-30B9-4456-B280-10F23B4E78C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97521B1A-30B9-4456-B280-10F23B4E78C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48AA191E-C206-44CB-85F6-0A7D7B2F98E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48AA191E-C206-44CB-85F6-0A7D7B2F98E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48AA191E-C206-44CB-85F6-0A7D7B2F98E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48AA191E-C206-44CB-85F6-0A7D7B2F98E0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1322FA04-4B93-4445-A111-E1BD1A0415FB} = {BA6FE7B8-D9FC-49B7-A495-54F99D2D762F}
+		{97521B1A-30B9-4456-B280-10F23B4E78C2} = {1322FA04-4B93-4445-A111-E1BD1A0415FB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9983847D-32A4-444B-9B42-65E4E96430BB}
+	EndGlobalSection
+EndGlobal
