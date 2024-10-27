@@ -85,5 +85,6 @@ namespace PatientManagement.Controllers
             _repository.Delete(id);
             return NoContent();
 
+        }
     }
 }
