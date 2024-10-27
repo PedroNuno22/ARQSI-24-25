@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using PatientManagement.Domain.Entities;
 
-namespace PatientManagement.Domain.Interfaces
+namespace PatientManagement.Domain.Interfaces //This interface defines methods for CRUD operations on Patient entities.
 {
     public interface IPatientRepository
     {
@@ -12,3 +12,5 @@ namespace PatientManagement.Domain.Interfaces
         void Delete(int id);
     }
 }
+
+// It allows the service layer to work independently of any specific data access method.
