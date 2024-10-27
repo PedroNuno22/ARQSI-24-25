@@ -1,18 +1,25 @@
+using Microsoft.EntityFrameworkCore;
+using PatientManagement.Domain.Interfaces;
+using BackOfficeApi.Infrastructure;
+using PatientManagement.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Configure in-memory database for PatientDbContext
+builder.Services.AddDbContext<PatientDbContext>(options =>
+    options.UseInMemoryDatabase("PatientDatabase"));
 
-// Register IPatientRepository with the DI container and use InMemoryPatientRepository as its implementation
-builder.Services.AddSingleton<PatientManagement.Domain.Interfaces.IPatientRepository, PatientManagement.Infrastructure.Repositories.InMemoryPatientRepository>();
+// Register the repository with the DI container
+builder.Services.AddScoped<IPatientRepository, EfPatientRepository>();
 
+// Add services to the container
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -20,9 +27,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
