@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <!-- Project References to access Domain and Application projects -->
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Application\Application.csproj" />
+  </ItemGroup>
+
+  <!-- Data Access and Infrastructure-Specific Packages -->
+  <ItemGroup>
+    <!-- Entity Framework Core for database access -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" /> <!-- or another provider if not using SQL Server -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0" />
+    
+    <!-- Add other packages as needed, such as for caching, messaging, or logging -->
+    <!-- Example: Redis for caching -->
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="7.0.0" />
+
+    <!-- Example: Serilog for logging -->
+    <PackageReference Include="Serilog.Extensions.Logging" Version="7.0.0" />
+  </ItemGroup>
+
+</Project>

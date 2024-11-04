@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <!-- Minimal dependencies to keep the domain layer isolated -->
+  <ItemGroup>
+    <!-- Add common packages only if they don’t create dependencies on other layers -->
+    <!-- For example, use System.ComponentModel.DataAnnotations for validation attributes -->
+  </ItemGroup>
+
+</Project>
