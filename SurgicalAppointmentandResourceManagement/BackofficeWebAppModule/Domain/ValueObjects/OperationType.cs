@@ -7,7 +7,7 @@ namespace Domain.Entities
     public class OperationType
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [StringLength(100)]

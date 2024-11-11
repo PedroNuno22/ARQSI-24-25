@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Domain.ValueObjects;
 
 namespace Domain.Entities
 {
@@ -10,7 +11,7 @@ namespace Domain.Entities
         public int Id { get; set; }
 
         [Required]
-        public int PatientMedicalRecordNumber { get; set; } // Foreign key to Patient entity
+        public MedicalRecordNumber MedicalRecordNumber { get; set; } // Foreign key to Patient entity
 
         [Required]
         public int DoctorId { get; set; } // Foreign key to Doctor entity

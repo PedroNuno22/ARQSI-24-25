@@ -45,7 +45,7 @@ namespace Infrastructure.Persistence
             // Patient to OperationRequests (one-to-many relationship)
             modelBuilder.Entity<OperationRequest>()
                 .HasOne(or => or.Patient)
-                .WithMany(p => p.AppointmentHistory)
+                .WithMany(p => p.OperationRequests)
                 .HasForeignKey(or => or.PatientId);
 
             // Appointment to Doctor (many-to-one relationship)
@@ -62,7 +62,7 @@ namespace Infrastructure.Persistence
 
             // Appointment to SurgeryRoom (many-to-one relationship)
             modelBuilder.Entity<Appointment>()
-                .HasOne(a => a.Room)
+                .HasOne(a => a.SurgeryRoom)
                 .WithMany()
                 .HasForeignKey(a => a.RoomId);
 

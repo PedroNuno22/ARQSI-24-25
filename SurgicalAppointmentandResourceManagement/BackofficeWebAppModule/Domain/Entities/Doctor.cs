@@ -5,10 +5,10 @@ using Domain.ValueObjects;
 
 namespace Domain.Entities
 {
-    public class Doctor
+    public class Doctor : Staff
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [StringLength(50)]

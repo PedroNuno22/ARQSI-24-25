@@ -1,15 +1,24 @@
 using Microsoft.EntityFrameworkCore;
-using SurgicalAppointmentandResourceManagement.Infrastructure.Persistence;
+using Infrastructure.Persistence.Repositories;
+using Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Domain.Services;
+using Domain.Repositories;
+using Application.Services;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
 
-// TODO: Add DbContext with connection string from appsettings.json
+// Database configuration
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(8, 0, 25)) 
+    ));
+    
 // Register repository and service interfaces
 builder.Services.AddScoped<IOperationRequestRepository, OperationRequestRepository>();
 builder.Services.AddScoped<IOperationRequestService, OperationRequestService>();

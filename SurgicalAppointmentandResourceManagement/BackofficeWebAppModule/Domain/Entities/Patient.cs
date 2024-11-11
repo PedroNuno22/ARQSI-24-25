@@ -8,6 +8,8 @@ namespace Domain.Entities
     public class Patient
     {
         [Key]
+        public Guid Id { get; set; } 
+
         public MedicalRecordNumber MedicalRecordNumber { get; private set; } // Unique identifier for each patient
 
         [Required]
@@ -42,6 +44,9 @@ namespace Domain.Entities
 
         // Navigation properties
         public ICollection<Appointment> AppointmentHistory { get; set; }
+
+        // Navigation property to represent the one-to-many relationship
+        public ICollection<OperationRequest> OperationRequests { get; set; } = new List<OperationRequest>();
 
         // Calculated property for Full Name
         public string FullName => $"{FirstName} {LastName}";
